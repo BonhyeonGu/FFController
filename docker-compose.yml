@@ -24,9 +24,7 @@ services:
     container_name: rtsp_srv0
     restart: always
     image: aler9/rtsp-simple-server:v0.21.1
-    ports:
-      - "12100:8554"
-      - "12200:8888"
+    network_mode: host       # important for WebRTC, HomeKit, UDP cameras
+    privileged: true         # only for FFmpeg hardware transcoding
     environment:
-        TZ: "Asia/Seoul"
-    restart: always
+      TZ: "Asia/Seoul"

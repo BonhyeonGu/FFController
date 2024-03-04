@@ -1,0 +1,26 @@
+logLevel: info
+logDestinations: [stdout]
+logFile: rtsp-simple-server.log
+
+readTimeout: 30s
+writeTimeout: 30s
+readBufferCount: 20480
+
+rtspDisable: no
+protocols: [udp, multicast, tcp]
+
+rtmpDisable: yes
+hlsDisable: no
+hlsAddress: :8888
+hlsVariant: lowLatency
+hlsEncryption: yes
+hlsServerKey: server.key
+hlsServerCert: server.crt
+hlsPartDuration: 500ms
+webrtcDisable: yes
+
+paths:
+  all:
+    source: publisher
+    publishUser: user01
+    publishPass: 1234

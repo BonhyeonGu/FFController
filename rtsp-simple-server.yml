@@ -1,0 +1,13 @@
+logLevel: info
+logDestinations: [stdout]
+logFile: rtsp-simple-server.log
+
+readTimeout: 30s
+writeTimeout: 30s
+readBufferCount: 20480
+
+rtspDisable: no
+protocols: [udp, multicast, tcp]
+
+rtmpDisable: yes
+hlsDisable: yes
