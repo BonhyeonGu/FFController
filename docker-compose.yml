@@ -10,8 +10,6 @@ services:
       dockerfile: ./Dockerfile
     environment:
         TZ: "Asia/Seoul"
-    depends_on:
-      - ffmpeg_cuda0
     deploy:
       resources:
         reservations:
