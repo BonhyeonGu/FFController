@@ -1,0 +1,34 @@
+version: "3"
+services:
+  ffmpeg_cuda0:
+    container_name: ffmpeg_cuda0
+#    volumes:
+#      - /home/user01/Docker/04_stream/record/:/root/record
+    restart: always
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+        TZ: "Asia/Seoul"
+    depends_on:
+      - ffmpeg_cuda0
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            device_ids: ['0']
+            capabilities: [gpu, utility, compute, video]
+
+#=====================================================================================================================================================================================
+
+  rtsp_srv0:
+    container_name: rtsp_srv0
+    restart: always
+    image: aler9/rtsp-simple-server:v0.21.1
+    ports:
+      - "12100:8554"
+      - "12200:8888"
+    environment:
+        TZ: "Asia/Seoul"
+    restart: always
