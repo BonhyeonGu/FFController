@@ -1,13 +1,78 @@
+###############################################
+# General parameters
+
 logLevel: info
 logDestinations: [stdout]
 logFile: rtsp-simple-server.log
 
-readTimeout: 30s
-writeTimeout: 30s
-readBufferCount: 20480
+readTimeout: 10s
+writeTimeout: 10s
+readBufferCount: 512
+
+externalAuthenticationURL:
+
+api: no
+
+metrics: no
+
+pprof: no
+
+runOnConnect:
+runOnConnectRestart: no
+
+###############################################
+# RTSP parameters
 
 rtspDisable: no
 protocols: [udp, multicast, tcp]
+encryption: "no"
+rtspAddress: :18554
+rtspsAddress: :18322
+rtpAddress: :18000
+rtcpAddress: :18001
+multicastIPRange: 224.1.0.0/16
+multicastRTPPort: 18002
+multicastRTCPPort: 18003
+authMethods: [basic, digest]
+
+###############################################
+# RTMP parameters
 
 rtmpDisable: yes
+
+###############################################
+# HLS parameters
+
 hlsDisable: yes
+
+###############################################
+# Path parameters
+
+paths:
+  all:
+    source: publisher
+    sourceProtocol: automatic
+    sourceAnyPortEnable: no
+    sourceFingerprint:
+    sourceOnDemand: no
+    sourceOnDemandStartTimeout: 10s
+    sourceOnDemandCloseAfter: 10s
+    sourceRedirect:
+    disablePublisherOverride: no
+    fallback:
+    publishUser:
+    publishPass:
+    publishIPs: []
+    readUser:
+    readPass:
+    readIPs: []
+    runOnInit:
+    runOnInitRestart: no
+    runOnDemand:
+    runOnDemandRestart: no
+    runOnDemandStartTimeout: 10s
+    runOnDemandCloseAfter: 10s
+    runOnReady:
+    runOnReadyRestart: no
+    runOnRead:
+    runOnReadRestart: no

@@ -1,7 +1,7 @@
 version: "3"
 services:
   ffmpeg_cuda0:
-    container_name: ffmpeg_cuda0
+    container_name: 04_ffmpeg_cuda0
 #    volumes:
 #      - /home/user01/Docker/04_stream/record/:/root/record
     restart: always
@@ -21,10 +21,12 @@ services:
 #=====================================================================================================================================================================================
 
   rtsp_srv0:
-    container_name: rtsp_srv0
-    restart: always
+    container_name: 04_rtsp_srv0
     image: aler9/rtsp-simple-server:v0.21.1
-    network_mode: host       # important for WebRTC, HomeKit, UDP cameras
-    privileged: true         # only for FFmpeg hardware transcoding
+    network_mode: host
+    privileged: true
     environment:
-      TZ: "Asia/Seoul"
+      - TZ=Asia/Seoul
+    volumes:
+      - /home/user01/Docker/04_PyProcController/rtsp-simple-server.yml:/rtsp-simple-server.yml
+
