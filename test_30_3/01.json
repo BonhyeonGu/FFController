@@ -1,0 +1,27 @@
+{
+    "reTime": {
+      "hour": "0",
+      "min": "0",
+      "delayMin": "1"
+    },
+    "proc": [
+      {
+        "cmd": "ffmpeg -loglevel warning -hwaccel cuda -r 30 -i rtsp://192.168.99.31:18554/stream1 -max_muxing_queue_size 2000 -c:v hevc_nvenc -preset p5 -b:v 4M -bufsize 4M -profile:v main -g 60 -f rtsp rtsp://192.168.99.5:18554/test0",
+        "id0": "ffmpeg",
+        "id1": "rtsp://192.168.99.31:18554/stream1",
+        "id2": "rtsp://192.168.99.5:18554/test0"
+      },
+      {
+        "cmd": "ffmpeg -loglevel warning -hwaccel cuda -r 30 -i rtsp://192.168.99.31:18554/stream1 -max_muxing_queue_size 2000 -c:v hevc_nvenc -preset p5 -b:v 4M -bufsize 4M -profile:v main -g 60 -f rtsp rtsp://192.168.99.5:18554/test1",
+        "id0": "ffmpeg",
+        "id1": "rtsp://192.168.99.31:18554/stream1",
+        "id2": "rtsp://192.168.99.5:18554/test1"
+      },
+      {
+        "cmd": "ffmpeg -loglevel warning -hwaccel cuda -r 30 -i rtsp://192.168.99.31:18554/stream1 -max_muxing_queue_size 2000 -c:v hevc_nvenc -preset p5 -b:v 4M -bufsize 4M -profile:v main -g 60 -f rtsp rtsp://192.168.99.5:18554/test2",
+        "id0": "ffmpeg",
+        "id1": "rtsp://192.168.99.31:18554/stream1",
+        "id2": "rtsp://192.168.99.5:18554/test2"
+      }
+    ]
+  }

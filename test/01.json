@@ -34,6 +34,12 @@
             "id0":"ffmpeg",
             "id1":"rtsp://192.168.99.31:18554/stream2",
             "id2":"rtsp://192.168.99.5:18554/test4"
+        },
+        {
+            "cmd":"ffmpeg -loglevel warning -hwaccel cuda -r 15 -i rtsp://192.168.99.31:18554/stream2 -max_muxing_queue_size 2000 -c:v hevc_nvenc -preset p5 -b:v 4M -bufsize 4M -profile:v main -g 30 -f rtsp rtsp://192.168.99.5:18554/test4",
+            "id0":"ffmpeg",
+            "id1":"rtsp://192.168.99.31:18554/stream2",
+            "id2":"rtsp://192.168.99.5:18554/test5"
         }
     ]
 }
