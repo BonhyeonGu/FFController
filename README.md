@@ -15,17 +15,11 @@ A service that supports experiments using CUDA and FFmpeg.<br/><br/>
 
 This repository is intended solely for development purposes and not for deployment. The deployment repository is managed under the authority of the [DT-DL Lab]() at Dong-A University.
 
-<div align="center">
-
-!!!
-
-</div>
-
 ## Demo
 
 <div align="center">
 
-!!!
+![Demo](https://github.com/user-attachments/assets/0f14420c-a12b-4ba0-a715-c6431ad9adb5)
 
 </div>
 
