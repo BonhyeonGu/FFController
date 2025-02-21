@@ -7,7 +7,7 @@ A service that supports experiments using CUDA and FFmpeg.<br/><br/>
 <picture><img src="https://img.shields.io/badge/-CUDA-76B900?style=flat-square&logo=nvidia&logoColor=FFFFFF" alt="..."></picture>
 <picture><img src="https://img.shields.io/badge/-Python3-3776AB?style=flat-square&logo=python&logoColor=FFFFFF" alt="..."></picture>
 <picture><img src="https://img.shields.io/badge/-Bash-4EAA25?style=flat-square&logo=gnubash&logoColor=FFFFFF" alt="..."></picture>
-<picture><img src="https://img.shields.io/badge/FFMPEG-007808?style=flat-square&logo=ffmpeg&logoColor=FFFFFF" alt="..."></picture>
+<picture><img src="https://img.shields.io/badge/-FFMPEG-007808?style=flat-square&logo=ffmpeg&logoColor=FFFFFF" alt="..."></picture>
 
 </div>
 
