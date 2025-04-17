@@ -13,7 +13,7 @@ A service that supports experiments using CUDA and FFmpeg.<br/><br/>
 
 ## Acknowledgment
 
-This repository is intended solely for development purposes and not for deployment. The deployment repository is managed under the authority of the [DT-DL Lab]() at Dong-A University.
+This repository is intended solely for development purposes and not for deployment. The deployment repository is managed under the authority of the [AIDT Lab]() at Dong-A University.
 
 ## Demo
 
