@@ -1,0 +1,59 @@
+{
+    "reTime" : {
+        "hour":"0",
+        "min":"0",
+        "delayMin":"1"
+    },
+    "proc": [
+        {
+            "cmd":"ffmpeg -loglevel warning -hwaccel cuda -r 15 -i rtsp://192.168.99.70:554/H.265/media.smp -max_muxing_queue_size 2000 -c:v hevc_nvenc -preset p5 -b:v 4M -bufsize 4M -profile:v main -g 30 -f rtsp rtsp://192.168.99.5:18554/stream0",
+            "id0":"ffmpeg",
+            "id1":"rtsp://192.168.99.70:554/H.265/media.smp",
+            "id2":"rtsp://192.168.99.5:18554/stream0"
+        },
+        {
+            "cmd":"ffmpeg -loglevel warning -hwaccel cuda -r 15 -i rtsp://192.168.99.71:554/H.265/media.smp -max_muxing_queue_size 2000 -c:v hevc_nvenc -preset p5 -b:v 4M -bufsize 4M -profile:v main -g 30 -f rtsp rtsp://192.168.99.5:18554/stream1",
+            "id0":"ffmpeg",
+            "id1":"rtsp://192.168.99.71:554/H.265/media.smp",
+            "id2":"rtsp://192.168.99.5:18554/stream1"
+        },
+        {
+            "cmd":"ffmpeg -loglevel warning -hwaccel cuda -r 15 -i rtsp://192.168.99.72:554/H.265/media.smp -max_muxing_queue_size 2000 -c:v hevc_nvenc -preset p5 -b:v 4M -bufsize 4M -profile:v main -g 30 -f rtsp rtsp://192.168.99.5:18554/stream2",
+            "id0":"ffmpeg",
+            "id1":"rtsp://192.168.99.72:554/H.265/media.smp",
+            "id2":"rtsp://192.168.99.5:18554/stream2"
+        },
+
+        {
+            "cmd":"ffmpeg -loglevel warning -hwaccel cuda -r 15 -i rtsp://viewer:qwer4321!@192.168.99.73:554 -max_muxing_queue_size 2000 -c:v hevc_nvenc -preset p5 -b:v 4M -bufsize 4M -profile:v main -g 30 -f rtsp rtsp://192.168.99.5:18554/stream3",
+            "id0":"ffmpeg",
+            "id1":"rtsp://viewer:qwer4321!@192.168.99.73:554",
+            "id2":"rtsp://192.168.99.5:18554/stream3"
+        },
+        {
+            "cmd":"ffmpeg -loglevel warning -hwaccel cuda -r 15 -i rtsp://192.168.99.74:554/H.265/media.smp -max_muxing_queue_size 2000 -c:v hevc_nvenc -preset p5 -b:v 4M -bufsize 4M -profile:v main -g 30 -f rtsp rtsp://192.168.99.5:18554/stream4",
+            "id0":"ffmpeg",
+            "id1":"rtsp://192.168.99.74:554/H.265/media.smp",
+            "id2":"rtsp://192.168.99.5:18554/stream4"
+        },
+
+        {
+            "cmd":"ffmpeg -loglevel warning -hwaccel cuda -r 30 -i rtsp://192.168.99.70:554/H.265_30FPS/media.smp -max_muxing_queue_size 2000 -c:v hevc_nvenc -preset p5 -b:v 4M -bufsize 4M -profile:v main -g 60 -f rtsp rtsp://192.168.99.5:18554/stream0_30",
+            "id0":"ffmpeg",
+            "id1":"rtsp://192.168.99.70:554/H.265_30FPS/media.smp",
+            "id2":"rtsp://192.168.99.5:18554/stream0_30"
+        },
+        {
+            "cmd":"ffmpeg -loglevel warning -hwaccel cuda -r 30 -i rtsp://192.168.99.71:554/H.265_30FPS/media.smp -max_muxing_queue_size 2000 -c:v hevc_nvenc -preset p5 -b:v 4M -bufsize 4M -profile:v main -g 60 -f rtsp rtsp://192.168.99.5:18554/stream1_30",
+            "id0":"ffmpeg",
+            "id1":"rtsp://192.168.99.71:554/H.265_30FPS/media.smp",
+            "id2":"rtsp://192.168.99.5:18554/stream1_30"
+        },
+        {
+            "cmd":"ffmpeg -loglevel warning -hwaccel cuda -r 30 -i rtsp://192.168.99.72:554/H.265_30FPS/media.smp -max_muxing_queue_size 2000 -c:v hevc_nvenc -preset p5 -b:v 4M -bufsize 4M -profile:v main -g 60 -f rtsp rtsp://192.168.99.5:18554/stream2_30",
+            "id0":"ffmpeg",
+            "id1":"rtsp://192.168.99.72:554/H.265_30FPS/media.smp",
+            "id2":"rtsp://192.168.99.5:18554/stream2_30"
+        }
+    ]
+}
