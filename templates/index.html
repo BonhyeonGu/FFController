@@ -2,26 +2,141 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>CCTV 프로세스 매니저</title>
+  <title>CCTV 프로세스 관리자</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f6f8fa;
+      margin: 30px;
+      color: #333;
+    }
+
+    h1, h2 {
+      color: #2c3e50;
+    }
+
+    ul {
+      padding-left: 0;
+      list-style: none;
+    }
+
+    li {
+      background-color: #ffffff;
+      border-left: 6px solid #3498db;
+      padding: 16px;
+      margin-bottom: 12px;
+      font-size: 18px;
+      line-height: 1.5;
+      word-break: break-word;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      position: relative;
+    }
+
+    .cmd-label {
+      font-family: 'Courier New', monospace;
+      background-color: #ecf0f1;
+      padding: 12px;
+      display: inline-block;
+      width: 100%;
+      font-size: 18px;
+      line-height: 1.8;
+      color: #2d3436;
+      white-space: pre-wrap;
+    }
+
+    .status-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: bold;
+      color: white;
+      border-radius: 12px;
+    }
+
+    .running {
+      background-color: #27ae60;
+    }
+
+    .dead {
+      background-color: #e74c3c;
+    }
+
+    .delete-form {
+      margin-top: 10px;
+    }
+
+    .delete-form button {
+      background-color: #e74c3c;
+      border: none;
+      color: white;
+      padding: 6px 12px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .delete-form button:hover {
+      background-color: #c0392b;
+    }
+
+    textarea {
+      width: 100%;
+      font-family: 'Courier New', monospace;
+      font-size: 15px;
+    }
+
+    button[type="submit"] {
+      margin-top: 8px;
+      background-color: #2ecc71;
+      border: none;
+      color: white;
+      padding: 10px 16px;
+      font-size: 15px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #27ae60;
+    }
+  </style>
+
+  <script>
+    // 14자마다 <wbr> 추가
+    function insertLineBreaks() {
+      const labels = document.querySelectorAll('.cmd-label');
+      labels.forEach(label => {
+        const original = label.textContent;
+        const wrapped = original.replace(/(.{14})/g, "$1<wbr>");
+        label.innerHTML = wrapped;
+      });
+    }
+    window.onload = insertLineBreaks;
+  </script>
 </head>
 <body>
-  <h1>현재 CCTV 목록</h1>
+  <h2>새로운 CCTV 추가</h2>
+  <form method="POST">
+    <textarea name="cmd" rows="4" placeholder="ffmpeg 명령어를 입력하세요"></textarea><br>
+    <button type="submit">추가</button>
+  </form>
+
+  <h1>현재 실행 중인 CCTV</h1>
   <ul>
-    {% for i, proc in enumerate(data) %}
+    {% for proc in data %}
       <li>
-        {{ i }}. {{ proc.cmd }}
-        <form method="POST" style="display:inline">
-          <input type="hidden" name="delete_index" value="{{ i }}">
+        <div class="cmd-label">{{ loop.index0 }}. {{ proc.cmd }}</div>
+        <div class="status-badge {{ 'running' if proc.status == 'RUNNING' else 'dead' }}">
+          {{ proc.status }}
+        </div>
+        <form method="POST" class="delete-form">
+          <input type="hidden" name="delete_index" value="{{ loop.index0 }}">
           <button type="submit">삭제</button>
         </form>
       </li>
     {% endfor %}
   </ul>
-
-  <h2>새로운 CCTV 추가</h2>
-  <form method="POST">
-    <textarea name="cmd" rows="4" cols="100" placeholder="ffmpeg 명령어 입력"></textarea><br>
-    <button type="submit">추가</button>
-  </form>
 </body>
 </html>

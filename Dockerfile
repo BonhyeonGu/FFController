@@ -78,8 +78,8 @@ RUN ln -s /root/ffmpeg/ffmpeg /usr/local/bin/ffmpeg
 WORKDIR /root
 RUN apt-get install -y python3 python3-pip
 RUN pip3 install psutil subprocess32
-RUN git clone https://github.com/BonhyeonGu/PyProcController
-WORKDIR /root/PyProcController
+RUN git clone https://github.com/BonhyeonGu/FFController
+WORKDIR /root/FFController
 
 #!----------------------------------------------------------------------------------------------------------------------
 

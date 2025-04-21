@@ -1,7 +1,7 @@
 version: "3"
 services:
   ffmpeg_cuda0:
-    container_name: 04_ffmpeg_cuda0
+    container_name: 04_FFController
 #    volumes:
 #      - /home/user01/Docker/04_stream/record/:/root/record
     restart: always
@@ -10,6 +10,8 @@ services:
       dockerfile: ./Dockerfile
     environment:
         TZ: "Asia/Seoul"
+    ports:
+      - "15000:5000"
     deploy:
       resources:
         reservations:
@@ -23,11 +25,9 @@ services:
   rtsp_srv0:
     container_name: 04_rtsp_srv0
     image: aler9/rtsp-simple-server:v0.21.1
-    restart: always
     network_mode: host
     privileged: true
     environment:
       - TZ=Asia/Seoul
     volumes:
-      - /home/user01/Docker/04_PyProcController/rtsp-simple-server.yml:/rtsp-simple-server.yml
-
+      - /home/user01/Docker/04_FFController/rtsp-simple-server.yml:/rtsp-simple-server.yml

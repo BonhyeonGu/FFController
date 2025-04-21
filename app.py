@@ -70,11 +70,19 @@ def procCheckAllAlive(data):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     data = readJson()
+
+    # 상태 확인 추가
+    for entry in data["proc"]:
+        pid = entry.get("pid")
+        alive = psutil.pid_exists(pid) if pid else False
+        found = procFind(entry["cmd"])
+        entry["status"] = "RUNNING" if alive and found else "DEAD"
+
     if request.method == 'POST':
         if 'cmd' in request.form:
             newCmd = request.form['cmd']
             pid = procStart(newCmd)
-            data["proc"].append({"cmd": newCmd, "pid": pid})
+            data["proc"].append({"cmd": newCmd, "pid": pid, "status": "RUNNING"})
             writeJson(data)
         elif 'delete_index' in request.form:
             idx = int(request.form['delete_index'])
@@ -82,6 +90,7 @@ def index():
             del data["proc"][idx]
             writeJson(data)
         return redirect('/')
+
     return renderTemplate(data)
 
 
